@@ -86,11 +86,11 @@
       console.log(lognum);
       valid(chosen);
 
-      $("#p").append("<h1>Greg Wolf will buy for " + chosen[0] + "</h1>");
-      $("#p").append("<h1>Amber will buy for " + chosen[1] + "</h1>");
-      $("#p").append("<h1>Sara will buy for " + chosen[2] + "</h1>");
-      $("#p").append("<h1>Orrin will buy for " + chosen[3] + "</h1>");
-      $("#p").append("<h1>Alex will buy for " + chosen[4] + "</h1>");
+      $("#p").append("<h1>Greg will buy for " + chosen[0] + "</h1>");
+      $("#p").append("<h1>Sara will buy for " + chosen[1] + "</h1>");
+      $("#p").append("<h1>Orrin will buy for " + chosen[2] + "</h1>");
+      $("#p").append("<h1>Alex will buy for " + chosen[3] + "</h1>");
+      $("#p").append("<h1>Ben will buy for " + chosen[4] + "</h1>");
       $("#p").append("<h1>Allison will buy for " + chosen[5] + "</h1>");
       $("#p").append("<h1>Keith will buy for " + chosen[6] + "</h1>");
       $("#p").append("<h1>Demy will buy for " + chosen[7] + "</h1>");
@@ -98,20 +98,20 @@
 
 
     function valid(list){
-      var giver = ["Greg", "Sara", "Orrin", "Alex", "Allison", "Keith", "Demy"];
-      if (list[0] == "Amber"
-      || list[1] == "Greg"
-      || list[2] == "Orrin"
-      || list[3] == "Sara"
+      var giver = ["Greg", "Sara", "Orrin", "Alex", "Ben", "Allison", "Keith", "Demy"];
+      if (list[1] == "Orrin"
+      || list[2] == "Sara"
+      || list[3] == "Ben"
+      || list[4] == "Alex"
       || list[6] == "Demy"
       || list[7] == "Keith"
         ) {
-          console.log("INVALID LIST!");
+          console.log("INVALID LIST! Partner Match");
           // randomize();
         }
       for (i=0; i<list.length; i++){
         if (giver[i] == list[i]) {
-          console.log("INVALID LIST!");
+          console.log("INVALID LIST! Self giving");
           // randomize();
         }
       }
