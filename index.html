@@ -5,108 +5,61 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
 
+    function shuffle(pool){
+      //stolen from https://www.w3resource.com/javascript-exercises/javascript-array-exercise-17.php
+      var ctr = pool.length, temp, index;
+      while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = pool[ctr];
+        pool[ctr] = pool[index];
+        pool[index] = temp;
+      }
+      return pool;
+    }
+
     function randomize(){
-      $("#p").html("");
-      var lognum = 0;
+      var shuffleCount = 0;
+      var pool = ["Greg", "Sara", "Ben", "Orrin", "Alex", "Tom", "Allison", "Keith"];
       do {
-        lognum += 1;
+        pool = shuffle(pool);
+        $("#p").html("");
 
-      var pool1 = ["Sara", "Orrin", "Alex", "Ben", "Allison", "Keith"];
-      var pool2 = ["Greg", "Alex", "Ben", "Allison", "Keith"];
-      var pool3 = ["Greg", "Sara", "Orrin", "Allison", "Keith"];
-      var pool4 = ["Greg", "Sara", "Ben", "Orrin", "Alex", "Keith"];
-      var pool5 = ["Greg", "Sara", "Ben", "Orrin", "Alex", "Allison"];
-      var chosen = [];
+        $("#p").append("<h1>Greg will buy for " + pool[0] + "</h1>");
+        $("#p").append("<h1>Sara will buy for " + pool[1] + "</h1>");
+        $("#p").append("<h1>Orrin will buy for " + pool[2] + "</h1>");
+        $("#p").append("<h1>Alex will buy for " + pool[3] + "</h1>");
+        $("#p").append("<h1>Ben will buy for " + pool[4] + "</h1>");
+        $("#p").append("<h1>Allison will buy for " + pool[5] + "</h1>");
+        $("#p").append("<h1>Tom will buy for " + pool[6] + "</h1>");
+        $("#p").append("<h1>Keith will buy for " + pool[7] + "</h1>");
+        shuffleCount += 1;
+        console.log("Total shuffles: " + shuffleCount);
+      } while (!valid(pool));
+      $("#p").append("<h1>It took "+shuffleCount+" shuffles to get a valid list.</h1>");
 
-      index = Math.floor((Math.random() * pool1.length-1) + 1);
-      chosen.push(pool1[index]);
-      console.log("Greg chooses: " + chosen[0]);
-      pool1.splice(index,1);
-
-      for (i=0; i<chosen.length; i++){
-        var index = pool2.indexOf(chosen[i]);
-        pool2.splice(index,1);
-      }
-      console.log("Remaining pool: " + pool2);
-
-      index = Math.floor((Math.random() * pool2.length-1) + 1);
-      chosen.push(pool2[index]);
-      console.log("Sara chooses: " + chosen[1]);
-      pool2.splice(index,1);
-      index = Math.floor((Math.random() * pool2.length-1) + 1);
-      chosen.push(pool2[index]);
-      console.log("Orrin chooses: " + chosen[2]);
-
-      for (i=0; i<chosen.length; i++){
-        var index = pool3.indexOf(chosen[i]);
-        pool3.splice(index,1);
-      }
-      console.log("Remaining pool: " + pool3);
-
-
-      index = Math.floor((Math.random() * pool3.length-1) + 1);
-      chosen.push(pool3[index]);
-      console.log("Alex chooses: " + chosen[3]);
-      pool3.splice(index,1);
-      index = Math.floor((Math.random() * pool3.length-1) + 1);
-      chosen.push(pool3[index]);
-      console.log("Ben chooses: " + chosen[4]);
-
-      for (i=0; i<chosen.length; i++){
-        var index = pool4.indexOf(chosen[i]);
-        pool4.splice(index,1);
-      }
-      console.log("Remaining pool: " + pool4);
-
-      index = Math.floor((Math.random() * pool4.length-1) + 1);
-      chosen.push(pool4[index]);
-      console.log("Allison chooses: " + chosen[5]);
-
-      console.log("CHOSEN SO FAR: " + chosen);
-      for (i=0; i<chosen.length; i++){
-        var index = pool5.indexOf(chosen[i]);
-        // console.log("Removing " + chosen[i]);
-        if (index != -1){pool5.splice(index,1);} else {console.log("NEGATIVE 1!!!"); }
-        // console.log("Remaining pool: " + pool5);
-      }
-      console.log("Remaining pool: " + pool5);
-
-
-      index = Math.floor((Math.random() * pool5.length-1) + 1);
-      chosen.push(pool5[index]);
-      console.log("Keith chooses: " + chosen[6]);
-
-    } while (chosen.indexOf(undefined) != -1);
-      console.log(chosen);
-      console.log(lognum);
-      valid(chosen);
-
-      $("#p").append("<h1>Greg will buy for " + chosen[0] + "</h1>");
-      $("#p").append("<h1>Sara will buy for " + chosen[1] + "</h1>");
-      $("#p").append("<h1>Orrin will buy for " + chosen[2] + "</h1>");
-      $("#p").append("<h1>Alex will buy for " + chosen[3] + "</h1>");
-      $("#p").append("<h1>Ben will buy for " + chosen[4] + "</h1>");
-      $("#p").append("<h1>Allison will buy for " + chosen[5] + "</h1>");
-      $("#p").append("<h1>Keith will buy for " + chosen[6] + "</h1>");
     }
 
 
     function valid(list){
-      var giver = ["Greg", "Sara", "Orrin", "Alex", "Ben", "Allison", "Keith"];
+      var giver = ["Greg", "Sara", "Orrin", "Alex", "Ben", "Allison", "Tom", "Keith"];
       if (list[1] == "Orrin"
       || list[2] == "Sara"
       || list[3] == "Ben"
       || list[4] == "Alex"
+      || list[5] == "Tom"
+      || list[6] == "Allison"
         ) {
           console.log("INVALID LIST! Partner Match");
-          // randomize();
+          return false;
         }
       for (i=0; i<list.length; i++){
         if (giver[i] == list[i]) {
           console.log("INVALID LIST! Self giving");
-          // randomize();
+          return false;
         }
       }
+      return true;
     }
     </script>
   </head>
