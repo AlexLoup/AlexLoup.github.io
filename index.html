@@ -20,7 +20,7 @@
 
     function randomize(){
       var shuffleCount = 0;
-      var pool = ["Greg", "Sara", "Ben", "Orrin", "Alex", "Tom", "Allison", "Keith"];
+      var pool = ["Greg", "Sara", "Jason", "Orrin", "Alex", "Tom", "Allison", "Keith"];
       do {
         pool = shuffle(pool);
         $("#p").html("");
@@ -29,7 +29,7 @@
         $("#p").append("<h1>Sara will buy for " + pool[1] + "</h1>");
         $("#p").append("<h1>Orrin will buy for " + pool[2] + "</h1>");
         $("#p").append("<h1>Alex will buy for " + pool[3] + "</h1>");
-        $("#p").append("<h1>Ben will buy for " + pool[4] + "</h1>");
+        $("#p").append("<h1>Jason will buy for " + pool[4] + "</h1>");
         $("#p").append("<h1>Allison will buy for " + pool[5] + "</h1>");
         $("#p").append("<h1>Tom will buy for " + pool[6] + "</h1>");
         $("#p").append("<h1>Keith will buy for " + pool[7] + "</h1>");
@@ -42,10 +42,10 @@
 
 
     function valid(list){
-      var giver = ["Greg", "Sara", "Orrin", "Alex", "Ben", "Allison", "Tom", "Keith"];
+      var giver = ["Greg", "Sara", "Orrin", "Alex", "Jason", "Allison", "Tom", "Keith"];
       if (list[1] == "Orrin"
       || list[2] == "Sara"
-      || list[3] == "Ben"
+      || list[3] == "Jason"
       || list[4] == "Alex"
       || list[5] == "Tom"
       || list[6] == "Allison"
