@@ -20,7 +20,7 @@
 
     function randomize(){
       var shuffleCount = 0;
-      var pool = ["Greg", "Sara", "Michael", "Orrin", "Alex", "Tom", "Allison", "Keith"];
+      var pool = ["Greg", "Sara", "Orrin", "Alex", "Tom", "Allison", "Keith"];
       do {
         pool = shuffle(pool);
         $("#p").html("");
@@ -29,10 +29,9 @@
         $("#p").append("<h1>Sara will buy for " + pool[1] + "</h1>");
         $("#p").append("<h1>Orrin will buy for " + pool[2] + "</h1>");
         $("#p").append("<h1>Alex will buy for " + pool[3] + "</h1>");
-        $("#p").append("<h1>Michael will buy for " + pool[4] + "</h1>");
-        $("#p").append("<h1>Allison will buy for " + pool[5] + "</h1>");
-        $("#p").append("<h1>Tom will buy for " + pool[6] + "</h1>");
-        $("#p").append("<h1>Keith will buy for " + pool[7] + "</h1>");
+        $("#p").append("<h1>Allison will buy for " + pool[4] + "</h1>");
+        $("#p").append("<h1>Tom will buy for " + pool[5] + "</h1>");
+        $("#p").append("<h1>Keith will buy for " + pool[6] + "</h1>");
         shuffleCount += 1;
         console.log("Total shuffles: " + shuffleCount);
       } while (!valid(pool));
@@ -42,13 +41,11 @@
 
 
     function valid(list){
-      var giver = ["Greg", "Sara", "Orrin", "Alex", "Michael", "Allison", "Tom", "Keith"];
+      var giver = ["Greg", "Sara", "Orrin", "Alex", "Allison", "Tom", "Keith"];
       if (list[1] == "Orrin"
       || list[2] == "Sara"
-      || list[3] == "Michael"
-      || list[4] == "Alex"
-      || list[5] == "Tom"
-      || list[6] == "Allison"
+      || list[4] == "Tom"
+      || list[5] == "Allison"
         ) {
           console.log("INVALID LIST! Partner Match");
           return false;
